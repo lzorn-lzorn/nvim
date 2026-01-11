@@ -8,8 +8,8 @@ opt.cursorline = true              -- 高亮当前行
 opt.cursorcolumn = true            -- 高亮当前列（可选, 这样竖着也有一个透明的线）
 
 -- 缩进设置
-opt.tabstop = 4                    -- Tab 键显示为 4 个空格
-opt.shiftwidth = 4                 -- 自动缩进时使用 4 个空格
+opt.tabstop = 2                    -- Tab 键显示为 4 个空格
+opt.shiftwidth = 2                 -- 自动缩进时使用 4 个空格
 opt.expandtab = true               -- 将 Tab 转换为空格
 opt.smartindent = true             -- 智能缩进
 opt.autoindent = true              -- 自动缩进
@@ -84,3 +84,5 @@ opt.foldenable = true              -- 启用折叠
 opt.foldmethod = "indent"          -- 基于缩进的折叠
 opt.foldlevel = 99                 -- 默认展开所有折叠
 
+-- 状态栏设置
+opt.laststatus = 3                -- 全局状态栏
