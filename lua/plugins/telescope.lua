@@ -10,6 +10,8 @@ return {
     { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
   },
   cmd = "Telescope",
+  -- telescope 是依赖控制台工具 ripgrep
+  -- Windows: scoop install ripgrep / choco install ripgrep
   keys = {
     { "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "查找文件" },
     { "<leader>fg", "<cmd>Telescope live_grep<cr>", desc = "搜索文本" },
