@@ -91,13 +91,10 @@ keymap("i", "<C-c>", '<Esc>"+yi', opt)
 keymap("t", "<Esc>", "<C-\\><C-n>", opts)             -- 终端模式下 Esc 返回普通模式
 -- 水平分屏打开终端
 keymap("n", "<leader>th", ":split | terminal<CR>", { desc = "终端 (水平)" })
-
 -- 垂直分屏打开终端
 keymap("n", "<leader>tv", ":vsplit | terminal<CR>", { desc = "终端 (垂直)" })
-
 -- 新标签页打开终端
 keymap("n", "<leader>tt", ":tabnew | terminal<CR>", { desc = "终端 (标签页)" })
-
 -- 全屏终端
 keymap("n", "<leader>tf", ":terminal<CR>", { desc = "终端 (全屏)" })
 

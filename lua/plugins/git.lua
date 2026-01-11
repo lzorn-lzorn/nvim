@@ -18,7 +18,7 @@ return {
           untracked = { text = "┆" },
         },
         on_attach = function(bufnr)
-          local gs = package.loaded. gitsigns
+          local gs = package.loaded.gitsigns
           local opts = { buffer = bufnr }
 
           vim.keymap.set("n", "]c", function()

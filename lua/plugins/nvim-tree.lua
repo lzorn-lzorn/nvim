@@ -11,6 +11,7 @@ return {
   keys = {
     { "<leader>e", "<cmd>NvimTreeToggle<cr>", desc = "文件浏览器" },
     { "<leader>E", "<cmd>NvimTreeFindFile<cr>", desc = "定位当前文件" },
+	{ "<leader>ee", "<cmd>NvimTreeFocus<cr>", desc = "光标聚焦到文件树" }
   },
   config = function()
     vim.g.loaded_netrw = 1
