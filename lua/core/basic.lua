@@ -1,4 +1,6 @@
 local opt = vim.opt
+-- 当前终端未使用 Nerd Font，默认关闭图标字形；安装后可手动改为 true。
+vim.g.have_nerd_font = false
 -- 显示行号
 opt.number = true                  -- 显示绝对行号
 opt.relativenumber = true          -- 显示相对行号（便于跳转）
@@ -8,8 +10,8 @@ opt.cursorline = true              -- 高亮当前行
 opt.cursorcolumn = true            -- 高亮当前列（可选, 这样竖着也有一个透明的线）
 
 -- 缩进设置
-opt.tabstop = 2                    -- Tab 键显示为 4 个空格
-opt.shiftwidth = 2                 -- 自动缩进时使用 4 个空格
+opt.tabstop = 4                    -- Tab 键显示为 4 个空格
+opt.shiftwidth = 4                 -- 自动缩进时使用 4 个空格
 opt.expandtab = true               -- 将 Tab 转换为空格
 opt.smartindent = true             -- 智能缩进
 opt.autoindent = true              -- 自动缩进

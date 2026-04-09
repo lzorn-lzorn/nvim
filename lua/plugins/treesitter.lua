@@ -7,6 +7,9 @@
 
 return {
   "nvim-treesitter/nvim-treesitter",
+  -- 兼容旧版 API：当前配置使用 require("nvim-treesitter.configs")，
+  -- 需固定到 master 分支（新重写分支已移除此模块）。
+  branch = "master",
   build = ":TSUpdate",
   event = { "BufReadPost", "BufNewFile" },
 --   dependencies = {
@@ -34,6 +37,7 @@ return {
         "json",
         "yaml",
         "markdown",
+        "markdown_inline",
         "bash",
         "c",
         "cpp",

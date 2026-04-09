@@ -1,79 +1,93 @@
 -- ============================================================================
--- Lualine - 美化状态栏
--- ~/. config/nvim/lua/plugins/lualine.lua
+-- Lualine - 现代化状态栏
+-- ~/.config/nvim/lua/plugins/lualine.lua
 -- ============================================================================
 
 return {
   "nvim-lualine/lualine.nvim",
   dependencies = { "nvim-tree/nvim-web-devicons" },
-  event = "VeryLazy",
-  
+  event = "UIEnter",
+
   config = function()
+    local theme = {
+      normal = {
+        a = { fg = "#1d2021", bg = "#83a598", gui = "bold" },
+        b = { fg = "#ebdbb2", bg = "#32302f" },
+        c = { fg = "#d5c4a1", bg = "#282828" },
+      },
+      insert = {
+        a = { fg = "#1d2021", bg = "#8ec07c", gui = "bold" },
+        b = { fg = "#ebdbb2", bg = "#32302f" },
+        c = { fg = "#d5c4a1", bg = "#282828" },
+      },
+      visual = {
+        a = { fg = "#1d2021", bg = "#d3869b", gui = "bold" },
+        b = { fg = "#ebdbb2", bg = "#32302f" },
+        c = { fg = "#d5c4a1", bg = "#282828" },
+      },
+      replace = {
+        a = { fg = "#1d2021", bg = "#fb4934", gui = "bold" },
+        b = { fg = "#ebdbb2", bg = "#32302f" },
+        c = { fg = "#d5c4a1", bg = "#282828" },
+      },
+      command = {
+        a = { fg = "#1d2021", bg = "#fabd2f", gui = "bold" },
+        b = { fg = "#ebdbb2", bg = "#32302f" },
+        c = { fg = "#d5c4a1", bg = "#282828" },
+      },
+      inactive = {
+        a = { fg = "#a89984", bg = "#282828" },
+        b = { fg = "#a89984", bg = "#282828" },
+        c = { fg = "#7c6f64", bg = "#282828" },
+      },
+    }
+
     require("lualine").setup({
       options = {
-        -- ⭐ 主题（选择一个）
-        theme = "gruvbox",  -- "auto" | "gruvbox" | "tokyonight" | "catppuccin" | "nord"
-        
-        -- ⭐ 分隔符样式
-        component_separators = { left = "", right = "" },
-        section_separators = { left = "", right = "" },
-        -- 或使用圆角：
-        -- component_separators = { left = "", right = "" },
-        -- section_separators = { left = "", right = "" },
-        
-        -- 禁用的文件类型
+        theme = theme,
+        component_separators = { left = "|", right = "|" },
+        section_separators = { left = "[", right = "]" },
         disabled_filetypes = {
-          statusline = { "alpha", "dashboard" },
-          winbar = {},
+          -- statusline = { "alpha", "dashboard" },
+          -- winbar = {},
         },
-        
-        -- 忽略焦点
         ignore_focus = {},
-        
-        -- 总是分割
         always_divide_middle = true,
-        
-        -- 全局状态栏
         globalstatus = true,
-        
-        -- 刷新
         refresh = {
-          statusline = 1000,
-          tabline = 1000,
-          winbar = 1000,
+          statusline = 800,
+          tabline = 100,
+          winbar = 100,
         },
       },
-      
-      -- ⭐⭐⭐ 状态栏布局
+
       sections = {
-        -- 左侧
         lualine_a = {
           {
             "mode",
             fmt = function(str)
-              return str:sub(1, 1)  -- 只显示首字母 N/I/V
+              return " " .. str .. " "
             end,
           },
         },
-        
+
         lualine_b = {
           {
             "branch",
-            icon = "",
+            icon = "git:",
           },
           {
             "diff",
-            symbols = { added = " ", modified = " ", removed = " " },
+            symbols = { added = "+", modified = "~", removed = "-" },
           },
         },
-        
+
         lualine_c = {
           {
             "filename",
-            file_status = true,     -- 显示文件状态（只读等）
+            file_status = true,
             newfile_status = false,
-            path = 1,               -- 0: 只文件名 1: 相对路径 2: 绝对路径 3: 绝对路径+~ 缩写
-            
+            path = 1,
             symbols = {
               modified = "[+]",
               readonly = "[-]",
@@ -82,13 +96,12 @@ return {
             },
           },
         },
-        
-        -- 右侧
+
         lualine_x = {
           {
             "diagnostics",
             sources = { "nvim_diagnostic" },
-            symbols = { error = " ", warn = " ", info = " ", hint = " " },
+            symbols = { error = "E:", warn = "W:", info = "I:", hint = "H:" },
           },
           {
             "filetype",
@@ -96,35 +109,30 @@ return {
             icon_only = false,
           },
         },
-        
+
         lualine_y = {
           {
             "encoding",
             fmt = function(str)
-              return str:upper()  -- UTF-8 大写
+              return str:upper()
             end,
           },
           {
             "fileformat",
             symbols = {
-              unix = "  ",
-              dos = "  ",
-              mac = "  ",
+              unix = "LF",
+              dos = "CRLF",
+              mac = "CR",
             },
           },
         },
-        
+
         lualine_z = {
-          {
-            "location",  -- 行号: 列号
-          },
-          {
-            "progress",  -- 百分比
-          },
+          { "location" },
+          { "progress" },
         },
       },
-      
-      -- 非活动窗口的状态栏
+
       inactive_sections = {
         lualine_a = {},
         lualine_b = {},
@@ -133,15 +141,10 @@ return {
         lualine_y = {},
         lualine_z = {},
       },
-      
-      -- 标签栏（可选，如果不想用 bufferline）
+
       tabline = {},
-      
-      -- Winbar（可选）
       winbar = {},
       inactive_winbar = {},
-      
-      -- 扩展
       extensions = {
         "nvim-tree",
         "lazy",
