@@ -43,12 +43,12 @@ return {
     config = function()
       local notify = require("notify")
       notify.setup({
-		background_colour = "#282828",  -- Gruvbox 背景色
+    background_colour = "#282828",  -- Gruvbox 背景色
         stages = "fade",
         timeout = 3000,
         })
-	   -- 设置为默认通知
-      	vim.notify = notify
+     -- 设置为默认通知
+        vim.notify = notify
     end,
   },
 
