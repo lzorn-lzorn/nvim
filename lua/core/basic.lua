@@ -1,4 +1,8 @@
 local opt = vim.opt
+
+-- 设置 <leader> 键为空格，建议在所有插件和快捷键定义前设置
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
 -- 当前终端未使用 Nerd Font，默认关闭图标字形；安装后可手动改为 true。
 vim.g.have_nerd_font = false
 -- 显示行号
