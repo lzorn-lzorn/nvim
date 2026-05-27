@@ -1,6 +1,6 @@
 -- 设置 Leader 键为空格
-vim.g.mapleader = "]"                  -- Leader 键
-vim.g.maplocalleader = "]"             -- Local Leader 键
+vim.g.mapleader = " "                  -- Leader 键
+vim.g.maplocalleader = " "             -- Local Leader 键
 
 -- 快捷键映射辅助函数
 local keymap = vim.keymap.set

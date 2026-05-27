@@ -1,7 +1,7 @@
 
 -- 提前设置 leader
-vim.g.mapleader = "]"
-vim.g.maplocalleader = "]"
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
 
 require("core.basic")
 require("core.keymap")

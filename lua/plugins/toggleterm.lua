@@ -26,7 +26,7 @@ return {
       -- 关闭时自动进入插入模式
       start_in_insert = true,
       -- 终端大小
-      size = 20 | function(term)
+      size = 20 or function(term)
 		if term.direction == "horizontal" then
 			return 15
 		elseif term.direction == "vertical" then
@@ -38,10 +38,15 @@ return {
     })
 
     -- 可选: 你也可以自定义更多快捷键，例如：
-    -- vim.api.nvim_set_keymap('n', '<leader>t', '<cmd>ToggleTerm<CR>', { noremap = true, silent = true, desc = '切换浮动终端' })
+    -- vim.api.nvim_set_keymap(
+    --   'n',
+    --   '<leader>t',
+    --   '<cmd>ToggleTerm<CR>',
+    --   { noremap = true, silent = true, desc = '切换浮动终端' }
+    -- )
 
-    -- 添加 :term 命令，命令模式下输入 :term 可打开/关闭浮动终端（与内置 :term 区分，优先级高于内置命令）
-    vim.api.nvim_create_user_command('term', function()
+    -- 添加 :Term 命令；用户命令必须以大写开头，不能覆盖内置的 :term。
+    vim.api.nvim_create_user_command('Term', function()
       require('toggleterm').toggle()
     end, { desc = '打开/关闭浮动终端' })
   end,
